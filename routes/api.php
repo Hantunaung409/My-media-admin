@@ -25,5 +25,7 @@ use App\Http\Controllers\Api\CategoryController;
   Route::post('user/register',[AuthController::class,'register']);
 
   Route::get('allPost',[PostController::class,'allPost']);
+  Route::post('category/search',[CategoryController::class,'categorySearch']);
+
   Route::get('allCategory',[CategoryController::class,'allCategory']);
   Route::post('post/search',[PostController::class,'postSearch']);
