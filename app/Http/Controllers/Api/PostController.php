@@ -26,4 +26,12 @@ class PostController extends Controller
             'searchResult' => $searchResult
         ]);
         }
+    
+    //post details
+    public function postDetails(Request $request){
+       $postData = Post::where('post_id', $request->pId)->first();
+       return response()->json([
+         'postData' => $postData
+       ]);
+    }
 }

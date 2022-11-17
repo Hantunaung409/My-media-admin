@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ActionLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -25,7 +26,11 @@ use App\Http\Controllers\Api\CategoryController;
   Route::post('user/register',[AuthController::class,'register']);
 
   Route::get('allPost',[PostController::class,'allPost']);
-  Route::post('category/search',[CategoryController::class,'categorySearch']);
+  Route::post('post/search',[PostController::class,'postSearch']);
+  Route::post('post/details',[PostController::class,'postDetails']);
+
 
   Route::get('allCategory',[CategoryController::class,'allCategory']);
-  Route::post('post/search',[PostController::class,'postSearch']);
+  Route::post('category/search',[CategoryController::class,'categorySearch']);
+
+  Route::post('post/actionLog',[ActionLogController::class,'setActionLog']);

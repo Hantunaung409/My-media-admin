@@ -22,45 +22,38 @@
         <table class="table table-hover text-nowrap text-center">
           <thead>
             <tr>
-              <th>Order ID</th>
-              <th>Customer Name</th>
-              <th>Pizza Name</th>
-              <th>Carrier Name</th>
-              <th>Payment With</th>
-              <th>Order Time</th>
+              <th>Post ID</th>
+              <th>Post Title</th>
+              <th>Post Image</th>
+              <th>View Count</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Sithu</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Tun Tun</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
+             @foreach ($data as $d)
+               <tr>
+                <td>{{ $d->post_id }}</td>
+                <td>{{ $d->title }}</td>
+                <td>                       
+                  @if ($d->image != null)
+                      <img src="{{ asset('storage/postImage/' . $d->image) }}" alt=""
+                          style="width: 100px" class=" rounded shadow-sm">
+                  @else
+                      <img src="{{ asset('defaultPostImage/defualtPostImage.png') }}" alt=""
+                          style="width: 100px" class=" rounded shadow-sm">
+                  @endif
+                </td>
+                <td><i class="fa-solid fa-eye me-1"></i>0</td>
+                <td><a href="{{ route('admin@trendPostDetails',$d->post_id) }}"><i class="fa-solid fa-circle-info"></i></a></td>
+               </tr>
+             @endforeach
           </tbody>
         </table>
+        
       </div>
       <!-- /.card-body -->
     </div>
     <!-- /.card -->
+    {{-- <div class=" float-right">{{ $data->links() }}</div> --}}
   </div>
 @endsection
